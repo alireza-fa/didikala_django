@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  didikala_postgres:
+    container_name: didikala_postgres
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=didikala
+      - POSTGRES_USER=didikala
+      - POSTGRES_PASSWORD=didikala
+    volumes:
+      - didikala_postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
+
+volumes:
+  didikala_postgres_data:
+    external: true
