@@ -11,7 +11,7 @@ from A.local_settings import *
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local apps
     'accounts.apps.AccountsConfig',
+    'core.apps.CoreConfig',
     # third party apps
     'storages',
 ]
@@ -44,7 +45,7 @@ ROOT_URLCONF = 'A.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,6 +117,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = (BASE_DIR / 'assets', )
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -134,11 +136,10 @@ CACHES = {
         # 'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         'LOCATION': '127.0.0.1:11211',
         'TIMEOUT': 86400,
-        'OPTIONS': {
-            'MAX_ENTRIES': 2000
-        },
         'KEY_PREFIX': 'cache',
     }
 }
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
+AUTH_USER_MODEL = 'accounts.user'

@@ -14,6 +14,13 @@ services:
       - "5432:5432"
     restart: always
 
+  didikala_rabbitmq:
+    container_name: didikala_rabbitmq
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+    restart: always
+
 
 volumes:
   didikala_postgres_data:

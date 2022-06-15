@@ -1,0 +1,49 @@
+{% extends 'accounts/base_auth.html' %}
+
+{% load static %}
+
+{% block title %}ورود | ثبت نام{% endblock %}
+
+{% block description %}ورد و ثبت نام در فروشگاه اینترنتی دیجی کالا، ورود به فروشگاه اینترنتی دیجی کالا{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'accounts/login.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content dt-sl mt-4 mb-3">
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-7 col-12 mx-auto">
+                <div class="logo-area text-center mb-3">
+                    <a href="{% url 'core:home' %}"><img src="{% static 'img/logo.png' %}" class="img-fluid" alt="logo"></a>
+                </div>
+                <div class="auth-wrapper form-ui border pt-4">
+                    <div class="section-title title-wide mb-1 no-after-title-wide">
+                        <h2 class="font-weight-bold">ورود | ثبت نام</h2>
+                    </div>
+                    <form action="" method="post" novalidate>{% csrf_token %}
+                        <div class="form-row-title">
+                            <h3>شماره موبایل</h3>
+                        </div>
+                        <div class="form-row with-icon" id="login-form">
+                            {{ form.phone_number }}
+                            <i class="mdi mdi-account-circle-outline"></i>
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="form-row mt-3">
+                        </div>
+                        <button id="login-button" type="button" class="btn-primary-cm btn-with-icon mx-auto w-100">
+                            <i class="mdi mdi-login-variant"></i>
+                            ورود به دیدیکالا
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
